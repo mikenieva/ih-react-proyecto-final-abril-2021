@@ -2,9 +2,9 @@
 import React, { useReducer } from 'react'
 
 import clienteAxios from './../../config/axios'
+import tokenAuth from './../../config/token'
 
 import axios from 'axios'
-
 
 import AuthContext from './AuthContext'
 import AuthReducer from './AuthReducer'
@@ -18,7 +18,6 @@ const AuthState = (props) => {
         autenticado: null
     }
 
-
     // B. CONFIGURACIÓN DEL REDUCER
     const [state, dispatch] = useReducer(AuthReducer, initialState)
 
@@ -30,7 +29,6 @@ const AuthState = (props) => {
             // EJECUTAMOS UN MÉTODO POST DE CREACIÓN DE USUARIO EN EL BACKEND
             const respuesta = await axios.post("http://localhost:4000/api/usuarios", datos)
 
-
             console.log(respuesta)
 
             // UNA VEZ QUE OBTENGO LA RESPUESTA, LO PASO A LOS REDUCERS
@@ -39,9 +37,30 @@ const AuthState = (props) => {
                 payload: respuesta.data
             })
 
+            // OBTENER EL USUARIO
+            verificarUsuario()
 
         } catch(e){
             console.log(e)
+        }
+
+
+    }
+
+
+    const verificarUsuario = async () => {
+         const token = localStorage.getItem('token')
+
+        if(token){
+            // Anexar en clienteAxios el token a través de x-auth-token
+            tokenAuth(token)
+        }
+
+        try {
+            const respuesta = await clienteAxios.get('/api/auth')
+            console.log(respuesta)
+        } catch(e){
+            return console.log(e)
         }
     }
 

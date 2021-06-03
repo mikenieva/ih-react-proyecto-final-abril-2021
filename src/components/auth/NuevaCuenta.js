@@ -116,6 +116,9 @@ export default function NuevaCuenta() {
                 </Link>
 
 
+                { ctxAuth.autenticado ? "Estás autenticado" : "No estás autenticado" }
+
+
         </div>
     )
 }
