@@ -15,7 +15,8 @@ const AuthState = (props) => {
     // A. ESTADO INICIAL
     const initialState = {
         mensaje: null,
-        autenticado: null
+        autenticado: null,
+        usuario: null
     }
 
     // B. CONFIGURACIÓN DEL REDUCER
@@ -43,8 +44,8 @@ const AuthState = (props) => {
         } catch(e){
             console.log(e)
         }
-
-
+    }
+    
     const verificarUsuario = async () => {
          const token = localStorage.getItem('token')
 
@@ -54,9 +55,16 @@ const AuthState = (props) => {
         }
 
         try {
-            console.log("clienteAxios:", clienteAxios)
+            
             const respuesta = await clienteAxios.get('/api/auth')
             console.log(respuesta)
+
+            dispatch({
+                type: "OBTENER_USUARIO",
+                payload: respuesta.data.usuario
+            })
+
+
         } catch(e){
             return console.log(e)
         }
@@ -68,6 +76,7 @@ const AuthState = (props) => {
             value={{
                 mensaje: state.mensaje,
                 autenticado: state.autenticado,
+                usuario: state.usuario,
                 registrarUsuario
             }}
         >

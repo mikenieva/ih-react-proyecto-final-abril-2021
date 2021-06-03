@@ -9,7 +9,7 @@ export default function NuevaCuenta() {
     // 1. FUNCIONES
     // A. ACCESO AL CONTEXTO
     const ctxAuth = useContext(AuthContext)
-    const { mensaje, autenticado, registrarUsuario } = ctxAuth
+    const { mensaje, autenticado, usuario, registrarUsuario } = ctxAuth
 
 
     // B. GESTIÓN DE ESTADO LOCAL (FORMULARIOS)
@@ -115,8 +115,11 @@ export default function NuevaCuenta() {
                     ¿Ya tienes un usuario? Inicia sesión
                 </Link>
 
+                { usuario.nombre ? <p>Hola {`${usuario.nombre}`}</p> : null }
 
                 { ctxAuth.autenticado ? "Estás autenticado" : "No estás autenticado" }
+
+                
 
 
         </div>

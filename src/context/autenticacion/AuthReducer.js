@@ -13,6 +13,13 @@ export default (state, action) => {
                 autenticado: true
             }
 
+        case "OBTENER_USUARIO": 
+            return {
+                ...state,
+                autenticado: true,
+                usuario: action.payload
+            }            
+
         default:
             return state
     }
