@@ -115,13 +115,9 @@ export default function NuevaCuenta() {
                     ¿Ya tienes un usuario? Inicia sesión
                 </Link>
 
-                { usuario.nombre ? <p>Hola {`${usuario.nombre}`}</p> : null }
+                { usuario ? <p>Hola {`${usuario.nombre}`}</p> : null }
 
                 { ctxAuth.autenticado ? "Estás autenticado" : "No estás autenticado" }
-
-                
-
-
         </div>
     )
 }
