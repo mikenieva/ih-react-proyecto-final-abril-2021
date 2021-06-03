@@ -15,12 +15,11 @@ const AuthState = (props) => {
 
 
     // B. CONFIGURACIÓN DEL REDUCER
-
+    const [state, dispatch] = useReducer(AuthReducer, initialState)
 
     // C. FUNCIONES DE MANEJO DE ESTADO
-
-    const registrarUsuario = async () => {
-
+    const registrarUsuario = async (datos) => {
+        console.log("Estos son los datos que enviaremos al servidor", datos)
     }
 
     // D. RETORNO

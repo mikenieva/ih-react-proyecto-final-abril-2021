@@ -98,7 +98,7 @@ export default function NuevaCuenta() {
                     />
                 </div>
 
-                <div classname="campo-form">
+                <div className="campo-form">
                     <input
                         type="submit"
                         className="btn btn-primario btn-block"
