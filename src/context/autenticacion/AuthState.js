@@ -1,6 +1,11 @@
 // 1. IMPORTACIONES
 import React, { useReducer } from 'react'
 
+import clienteAxios from './../../config/axios'
+
+import axios from 'axios'
+
+
 import AuthContext from './AuthContext'
 import AuthReducer from './AuthReducer'
 
@@ -19,7 +24,25 @@ const AuthState = (props) => {
 
     // C. FUNCIONES DE MANEJO DE ESTADO
     const registrarUsuario = async (datos) => {
-        console.log("Estos son los datos que enviaremos al servidor", datos)
+
+        // VAMOS A EJECUTAR UN PROCESO ASÍNCRONO
+        try {
+            // EJECUTAMOS UN MÉTODO POST DE CREACIÓN DE USUARIO EN EL BACKEND
+            const respuesta = await axios.post("http://localhost:4000/api/usuarios", datos)
+
+
+            console.log(respuesta)
+
+            // UNA VEZ QUE OBTENGO LA RESPUESTA, LO PASO A LOS REDUCERS
+            dispatch({
+                type: "REGISTRO_EXITOSO",
+                payload: respuesta.data
+            })
+
+
+        } catch(e){
+            console.log(e)
+        }
     }
 
     // D. RETORNO
