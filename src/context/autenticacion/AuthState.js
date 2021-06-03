@@ -45,9 +45,6 @@ const AuthState = (props) => {
         }
 
 
-    }
-
-
     const verificarUsuario = async () => {
          const token = localStorage.getItem('token')
 
@@ -57,6 +54,7 @@ const AuthState = (props) => {
         }
 
         try {
+            console.log("clienteAxios:", clienteAxios)
             const respuesta = await clienteAxios.get('/api/auth')
             console.log(respuesta)
         } catch(e){
