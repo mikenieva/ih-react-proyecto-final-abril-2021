@@ -18,8 +18,8 @@ const RutaPrivada = ({component: Component, ...props }) => {
 
     useEffect(() => {
         verificarUsuario()
-    })
-    
+    }, [])
+
     return (
         <Route
             {...props}

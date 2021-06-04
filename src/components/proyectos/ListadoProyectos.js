@@ -15,7 +15,6 @@ export default function ListadoProyectos() {
     useEffect(() => {
 
         const generarEventos = async () => {
-            await verificarUsuario()
             await obtenerProyectos()            
             return 
         }

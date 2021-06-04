@@ -24,6 +24,7 @@ export default function Login(props) {
         if(autenticado){    
             props.history.push('/proyectos')
         }
+        
         return
     }, [ autenticado ])
 
