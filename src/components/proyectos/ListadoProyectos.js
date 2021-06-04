@@ -12,7 +12,6 @@ export default function ListadoProyectos() {
     const authContext     = useContext(AuthContext)
     const { verificarUsuario } = authContext
 
-
     useEffect(() => {
 
         const generarEventos = async () => {
@@ -36,7 +35,7 @@ export default function ListadoProyectos() {
                 :
                 proyectos.map(e => {
                     return (
-                        <p>{e.nombre}</p>
+                        <p key={e._id}>{e.nombre}</p>
                     )
                 })
             }
