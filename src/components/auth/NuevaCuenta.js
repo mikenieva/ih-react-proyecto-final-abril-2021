@@ -1,10 +1,9 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import AuthContext from './../../context/autenticacion/AuthContext'
 
-
-export default function NuevaCuenta() {
+export default function NuevaCuenta(props) {
 
     // 1. FUNCIONES
     // A. ACCESO AL CONTEXTO
@@ -23,6 +22,16 @@ export default function NuevaCuenta() {
     const { nombre, email, password, confirmar } = datosUsuarioFormulario
 
 
+
+    // C. USEEFFECT - MONITOREO DE CAMBIOS
+    useEffect(() => {
+        if(autenticado){
+           props.history.push('/proyectos') 
+        }
+
+        return
+
+    }, [ autenticado ])
 
     const monitoreoCambios = (event) => {
 
@@ -105,9 +114,6 @@ export default function NuevaCuenta() {
                         value="Registrarme"
                     />
                 </div>
-
-
-
 
             </form>
 

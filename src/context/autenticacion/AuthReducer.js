@@ -13,6 +13,17 @@ export default (state, action) => {
                 autenticado: true
             }
 
+
+        case "LOGIN_EXITOSO":
+            // GUARDA EL TOKEN EN EL NAVEGADOR
+            localStorage.setItem('token', action.payload.token)
+
+            // MODIFICACIÓN DEL ESTADO GLOBAL
+            return {
+                ...state,
+                autenticado: true
+            }
+
         case "OBTENER_USUARIO": 
             return {
                 ...state,

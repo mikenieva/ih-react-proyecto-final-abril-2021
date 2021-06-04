@@ -1,5 +1,6 @@
 import Login  from './components/auth/Login'
 import NuevaCuenta from './components/auth/NuevaCuenta'
+import Proyectos from './components/proyectos/ListadoProyectos'
 
 import {
   BrowserRouter as Router,
@@ -26,6 +27,11 @@ function App() {
                 path="/nueva-cuenta"
                 component={NuevaCuenta}
                 exact
+              />
+              <Route 
+                path="/proyectos"
+                component={Proyectos}
+                exact              
               />
             </Switch>
           </Router>  
