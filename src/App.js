@@ -11,6 +11,8 @@ import {
 import AuthState from "./context/autenticacion/AuthState"
 import ProyectoState from './context/proyectos/ProyectoState'
 
+import RutaPrivada from './components/rutas/RutaPrivada'
+
 import './App.css';
 
 function App() {
@@ -31,7 +33,7 @@ function App() {
                   component={NuevaCuenta}
                   exact
                 />
-                <Route 
+                <RutaPrivada 
                   path="/proyectos"
                   component={Proyectos}
                   exact              

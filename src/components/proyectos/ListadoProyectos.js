@@ -10,7 +10,7 @@ export default function ListadoProyectos() {
     const { proyectos, obtenerProyectos } = proyectoContext
 
     const authContext     = useContext(AuthContext)
-    const { verificarUsuario } = authContext
+    const { verificarUsuario, cerrarSesion } = authContext
 
     useEffect(() => {
 
@@ -24,6 +24,12 @@ export default function ListadoProyectos() {
         
     }, [])
 
+
+    const clickLogout = (e) => {
+        e.preventDefault()
+        cerrarSesion()
+
+    }
 
 
 
@@ -39,6 +45,11 @@ export default function ListadoProyectos() {
                     )
                 })
             }
+
+            <button onClick={(e) => {clickLogout(e)}}>
+                Cerrar sesión
+            </button>
+
         </div>
     )
 }

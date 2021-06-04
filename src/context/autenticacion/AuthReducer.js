@@ -29,7 +29,19 @@ export default (state, action) => {
                 ...state,
                 autenticado: true,
                 usuario: action.payload
-            }            
+            }        
+            
+            
+        case "CERRAR_SESION":
+            localStorage.removeItem("token")
+
+            console.log("Estoy en el reducer")
+            return{
+                ...state,
+                usuario: null,
+                autenticado: null,
+                mensaje: null
+            }
 
         default:
             return state

@@ -88,6 +88,13 @@ const AuthState = (props) => {
          verificarUsuario()
     }
 
+    const cerrarSesion = async () => {
+        dispatch({
+            type: "CERRAR_SESION",
+            payload: null
+        })
+    }
+
 
     // D. RETORNO
     return (
@@ -98,7 +105,8 @@ const AuthState = (props) => {
                 usuario: state.usuario,
                 registrarUsuario,
                 iniciarSesion,
-                verificarUsuario
+                verificarUsuario,
+                cerrarSesion
             }}
         >
             {props.children}
