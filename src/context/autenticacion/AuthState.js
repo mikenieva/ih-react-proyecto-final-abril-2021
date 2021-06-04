@@ -84,7 +84,8 @@ const AuthState = (props) => {
             return
         }
 
-
+         // OBTENER EL USUARIO
+         verificarUsuario()
     }
 
 
@@ -96,7 +97,8 @@ const AuthState = (props) => {
                 autenticado: state.autenticado,
                 usuario: state.usuario,
                 registrarUsuario,
-                iniciarSesion
+                iniciarSesion,
+                verificarUsuario
             }}
         >
             {props.children}

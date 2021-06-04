@@ -19,7 +19,25 @@ const ProyectoState = props => {
 
     // C. FUNCIONES PROPIAS
 
-    
+    const obtenerProyectos = async () => {
+        try {
+
+            const resultado = await clienteAxios.get('/api/proyectos')
+            console.log("El resultado es:", resultado)
+            dispatch({
+                type: "OBTENER_PROYECTOS",
+                payload: resultado.data.listaProyectos
+            })
+
+        } catch(e){
+            console.log(e)
+            return
+        }
+
+
+    }
+
+
 
     // D. RETORNO
 
@@ -27,7 +45,8 @@ const ProyectoState = props => {
 
         <ProyectoContext.Provider
             value={{
-                proyectos: state.proyectos
+                proyectos: state.proyectos,
+                obtenerProyectos
             }}
         >
             {props.children}

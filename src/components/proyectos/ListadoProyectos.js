@@ -1,12 +1,32 @@
 import React, { useContext, useEffect } from 'react'
 
 import ProyectoContext from './../../context/proyectos/ProyectoContext'
+import AuthContext from './../../context/autenticacion/AuthContext'
 
 export default function ListadoProyectos() {
 
     // EXTRAER LOS VALORES DEL CONTEXT (ESTADO GLOBAL)
     const proyectoContext = useContext(ProyectoContext)
-    const { proyectos } = proyectoContext
+    const { proyectos, obtenerProyectos } = proyectoContext
+
+    const authContext     = useContext(AuthContext)
+    const { verificarUsuario } = authContext
+
+
+    useEffect(() => {
+
+        const generarEventos = async () => {
+            await verificarUsuario()
+            await obtenerProyectos()            
+            return 
+        }
+
+        generarEventos()
+        
+    }, [])
+
+
+
 
     return (
         <div>
@@ -16,7 +36,7 @@ export default function ListadoProyectos() {
                 :
                 proyectos.map(e => {
                     return (
-                        <p>{e}</p>
+                        <p>{e.nombre}</p>
                     )
                 })
             }
