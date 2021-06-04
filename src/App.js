@@ -9,33 +9,37 @@ import {
 } from 'react-router-dom'
 
 import AuthState from "./context/autenticacion/AuthState"
+import ProyectoState from './context/proyectos/ProyectoState'
 
 import './App.css';
 
 function App() {
   return (
     <>
-    <AuthState>
-          <Router>
-            <Switch>
-              <Route 
-                path="/"
-                component={Login}
-                exact
-              />
-              <Route 
-                path="/nueva-cuenta"
-                component={NuevaCuenta}
-                exact
-              />
-              <Route 
-                path="/proyectos"
-                component={Proyectos}
-                exact              
-              />
-            </Switch>
-          </Router>  
+
+    <ProyectoState>
+      <AuthState>
+            <Router>
+              <Switch>
+                <Route 
+                  path="/"
+                  component={Login}
+                  exact
+                />
+                <Route 
+                  path="/nueva-cuenta"
+                  component={NuevaCuenta}
+                  exact
+                />
+                <Route 
+                  path="/proyectos"
+                  component={Proyectos}
+                  exact              
+                />
+              </Switch>
+            </Router>  
       </AuthState>
+    </ProyectoState>
     </>
   );
 }

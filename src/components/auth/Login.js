@@ -20,6 +20,7 @@ export default function Login(props) {
     const {email, password} = datosFormulario
 
     useEffect(() => {
+
         if(autenticado){    
             props.history.push('/proyectos')
         }
@@ -98,15 +99,7 @@ export default function Login(props) {
                 
                 </Link>
 
-
-                
-
-
-
-
             </form>
-
-
         </div>
     )
 }
